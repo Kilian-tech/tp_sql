@@ -39,21 +39,21 @@ INSERT INTO utilisateurs (nom, prenom, email) VALUES
 ('Garnier', 'Chloé', 'chloe.garnier@example.com'),
 ('Chevalier', 'Nathan', 'nathan.chevalier@example.com')
 
-INSERT INTO materiel (nom, description, quantite_disponible) VALUES 
-('Ordinateur portable', 'PC Lenovo ThinkPad avec 16 Go de RAM', 5),
-('Caméra', 'Caméra 4K Sony', 3),
-('Projecteur', 'Vidéoprojecteur HD BenQ', 2),
-('Microphone', 'Micro USB Blue Yeti', 4),
-('Casque audio', 'Casque antibruit Bose', 6),
-('Tablette graphique', 'Wacom Intuos Pro', 2),
-('Imprimante 3D', 'Creality Ender 3', 1),
-('Clé USB', 'Clé USB 64 Go', 10),
-('Routeur Wi-Fi', 'Routeur TP-Link AC1200', 2),
-('Arduino Kit', 'Kit de démarrage Arduino Uno', 7);
+INSERT INTO materiel (id_materiel, nom_materiel, description, quantite_disponible) VALUES
+(1, 'Ordinateur portable', 'PC Lenovo ThinkPad avec 16 Go de RAM', 5),
+(2, 'Caméra', 'Caméra 4K Sony', 3),
+(3, 'Projecteur', 'Vidéoprojecteur HD BenQ', 2),
+(4, 'Microphone', 'Micro USB Blue Yeti', 4),
+(5, 'Casque audio', 'Casque antibruit Bose', 6),
+(6, 'Tablette graphique', 'Wacom Intuos Pro', 2),
+(7, 'Imprimante 3D', 'Creality Ender 3', 1),
+(8, 'Clé USB', 'Clé USB 64 Go', 10),
+(9, 'Routeur Wi-Fi', 'Routeur TP-Link AC1200', 2),
+(10, 'Arduino Kit', 'Kit de démarrage Arduino Uno', 7);
 
-INSERT INTO reservation (date_debut, date_fin, id_utilisateur, id_materiel) VALUES
-('2025-05-01', '2025-05-05', 1, 2),  -- Jean Dupont réserve la Caméra
-('2025-05-03', '2025-05-04', 2, 1),  -- Sophie Martin réserve un PC portable
-('2025-05-02', '2025-05-07', 3, 4),  -- Paul Durand réserve un Micro
-('2025-05-10', '2025-05-12', 4, 7),  -- Claire Leroy réserve une imprimante 3D
-('2025-05-15', '2025-05-16', 5, 3);  -- Lucas Moreau réserve un projecteur
+INSERT INTO reservations (id_reservation, date_debut, date_fin, id_etudiant, id_materiel) VALUES
+(1, '2025-05-01', '2025-05-05', 1, 2),
+(2, '2025-05-03', '2025-05-04', 1, 3),
+(3, '2025-05-02', '2025-05-07', 3, 4),
+(4, '2025-05-10', '2025-05-12', 4, 7),
+(5, '2025-05-15', '2025-05-16', 5, 3);
