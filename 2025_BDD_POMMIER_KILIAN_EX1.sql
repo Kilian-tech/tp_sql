@@ -1,3 +1,5 @@
+-- Création de la table utilisateurs contenant les informations personnelles des étudiants.
+-- Le champ `id_etudiant` est la clé primaire, et `numero_etudiant` est unique pour éviter les doublons d’identifiants.
 CREATE TABLE utilisateurs(
    id_etudiant INT,
    nom VARCHAR(50),
@@ -7,6 +9,8 @@ CREATE TABLE utilisateurs(
    PRIMARY KEY(id_etudiant)
 );
 
+-- Création de la table materiel listant les équipements disponibles à la réservation.
+-- Chaque matériel est identifié par `id_materiel` (clé primaire).
 CREATE TABLE materiel(
    id_materiel INT,
    nom_materiel VARCHAR(50),
@@ -15,6 +19,9 @@ CREATE TABLE materiel(
    PRIMARY KEY(id_materiel)
 );
 
+-- Création de la table des réservations.
+-- Chaque réservation associe un étudiant à un matériel, avec des dates de début et de fin.
+-- Les clés étrangères garantissent l’intégrité référentielle avec les tables `utilisateurs` et `materiel`.
 CREATE TABLE reservations(
    id_reservation INT,
    date_debut DATE,
@@ -22,12 +29,13 @@ CREATE TABLE reservations(
    numero_etudiant VARCHAR(50),
    id_materiel INT,
    id_etudiant INT NOT NULL,
-   id_materiel_1 INT NOT NULL,
    PRIMARY KEY(id_reservation),
-   FOREIGN KEY(id_etudiant) REFERENCES Utilisateurs(id_etudiant),
-   FOREIGN KEY(id_materiel_1) REFERENCES Materiel(id_materiel)
+   FOREIGN KEY(id_etudiant) REFERENCES utilisateurs(id_etudiant),
+   FOREIGN KEY(id_materiel) REFERENCES materiel(id_materiel)
 );
 
+-- Insertion de 10 utilisateurs fictifs dans la table utilisateurs.
+-- Les données couvrent des noms, prénoms, emails et numéros étudiants simulés pour les tests.
 INSERT INTO utilisateurs (nom, prenom, email, numero_etudiant) VALUES
 ('Dupont', 'Alice', 'alice.dupont@example.com', '01'),
 ('Martin', 'Lucas', 'lucas.martin@example.com', '02'),
@@ -40,6 +48,7 @@ INSERT INTO utilisateurs (nom, prenom, email, numero_etudiant) VALUES
 ('Garnier', 'Chloé', 'chloe.garnier@example.com', '09'),
 ('Chevalier', 'Nathan', 'nathan.chevalier@example.com', '10')
 
+-- Insertion de 10 équipements disponibles à la réservation avec leurs caractéristiques (nom, description, quantité).
 INSERT INTO materiel (id_materiel, nom_materiel, description, quantite_disponible) VALUES
 (1, 'Ordinateur portable', 'PC Lenovo ThinkPad avec 16 Go de RAM', 5),
 (2, 'Caméra', 'Caméra 4K Sony', 3),
@@ -52,6 +61,8 @@ INSERT INTO materiel (id_materiel, nom_materiel, description, quantite_disponibl
 (9, 'Routeur Wi-Fi', 'Routeur TP-Link AC1200', 2),
 (10, 'Arduino Kit', 'Kit de démarrage Arduino Uno', 7);
 
+-- Insertion de 5 réservations correspondant à des prêts de matériel par différents utilisateurs.
+-- Les dates sont utilisées pour simuler des périodes de réservation réalistes.
 INSERT INTO reservations (id_reservation, date_debut, date_fin, id_etudiant, id_materiel) VALUES
 (1, '2025-05-01', '2025-05-05', 1, 2),
 (2, '2025-05-03', '2025-05-04', 1, 3),
