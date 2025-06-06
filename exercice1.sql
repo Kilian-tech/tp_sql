@@ -3,6 +3,7 @@ CREATE TABLE utilisateurs(
    nom VARCHAR(50),
    prenom VARCHAR(50),
    email VARCHAR(50),
+   numero_etudiant VARCHAR(20) UNIQUE,
    PRIMARY KEY(id_etudiant)
 );
 
@@ -27,17 +28,17 @@ CREATE TABLE reservations(
    FOREIGN KEY(id_materiel_1) REFERENCES Materiel(id_materiel)
 );
 
-INSERT INTO utilisateurs (nom, prenom, email) VALUES
-('Dupont', 'Alice', 'alice.dupont@example.com'),
-('Martin', 'Lucas', 'lucas.martin@example.com'),
-('Durand', 'Sophie', 'sophie.durand@example.com'),
-('Leroy', 'Thomas', 'thomas.leroy@example.com'),
-('Petit', 'Laura', 'laura.petit@example.com'),
-('Moreau', 'Nicolas', 'nicolas.moreau@example.com'),
-('Fournier', 'Emma', 'emma.fournier@example.com'),
-('Girard', 'Léo', 'leo.girard@example.com'),
-('Garnier', 'Chloé', 'chloe.garnier@example.com'),
-('Chevalier', 'Nathan', 'nathan.chevalier@example.com')
+INSERT INTO utilisateurs (nom, prenom, email, numero_etudiant) VALUES
+('Dupont', 'Alice', 'alice.dupont@example.com', '01'),
+('Martin', 'Lucas', 'lucas.martin@example.com', '02'),
+('Durand', 'Sophie', 'sophie.durand@example.com', '03'),
+('Leroy', 'Thomas', 'thomas.leroy@example.com', '04'),
+('Petit', 'Laura', 'laura.petit@example.com', '05'),
+('Moreau', 'Nicolas', 'nicolas.moreau@example.com', '06'),
+('Fournier', 'Emma', 'emma.fournier@example.com', '07'),
+('Girard', 'Léo', 'leo.girard@example.com', '08'),
+('Garnier', 'Chloé', 'chloe.garnier@example.com', '09'),
+('Chevalier', 'Nathan', 'nathan.chevalier@example.com', '10')
 
 INSERT INTO materiel (id_materiel, nom_materiel, description, quantite_disponible) VALUES
 (1, 'Ordinateur portable', 'PC Lenovo ThinkPad avec 16 Go de RAM', 5),

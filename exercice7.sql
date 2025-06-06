@@ -1,31 +1,31 @@
 1:
-SELECT * FROM utilisateur as u
-INNER JOIN reservation as r ON u.userid=r.userid;
+SELECT * FROM utilisateurs as u
+INNER JOIN reservations as r ON u.id_etudiant=r.id_etudiant;
 
 2:
 SELECT * FROM materiel 
-WHERE materialid NOT IN (
-    SELECT materialid FROM reservation
+WHERE id_materiel NOT IN (
+    SELECT id_materiel FROM reservations
 );
 
 3:
 SELECT 
-    m.materialid, 
-    m.nom, 
-    COUNT(r.materialid) AS nombre_emprunts
+    m.id_materiel, 
+    m.nom_materiel, 
+    COUNT(r.id_materiel) AS nombre_emprunts
 FROM materiel as m
-INNER JOIN reservation as r ON m.materialid = r.materialid
-GROUP BY m.materialid, m.nom
-HAVING COUNT(r.materialid) > 3;
+INNER JOIN reservations as r ON m.id_materiel = r.id_materiel
+GROUP BY m.id_materiel, m.nom_materiel
+HAVING COUNT(r.id_materiel) > 3;
 
 4:
 SELECT 
-    u.userid,
+    u.id_etudiant,
     u.nom,
     u.prenom,
-    u.numetudiant,
-    COUNT(r.reservationid) AS nombre_emprunts
-FROM utilisateur as u
-LEFT JOIN reservation r ON u.userid = r.userid
-GROUP BY u.userid, u.nom, u.prenom, u.numetudiant
-ORDER BY u.numetudiant;
+    u.numero_etudiant,
+    COUNT(r.id_reservation) AS nombre_emprunts
+FROM utilisateurs as u
+LEFT JOIN reservations r ON u.id_etudiant = r.id_etudiant
+GROUP BY u.id_etudiant, u.nom, u.prenom, u.numero_etudiant
+ORDER BY u.numero_etudiant;

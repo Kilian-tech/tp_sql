@@ -1,7 +1,7 @@
 1:
-DELETE FROM reservation
-WHERE reservationid=3;
+DELETE FROM reservations
+WHERE id_reservation=2;
 
 2:
-DELETE FROM reservation
+DELETE FROM reservations
 WHERE date_fin<CURRENT_DATE;
